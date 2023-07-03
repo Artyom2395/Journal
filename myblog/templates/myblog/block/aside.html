@@ -1,0 +1,48 @@
+<div class="col-md-4">
+    <div class="card my-4">
+        <h5 class="card-header">Теги</h5>
+        <div class="card-body">
+            <div class="row">
+                <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#">Django</a>
+                        </li>
+                        <li>
+                            <a href="#">VueJS</a>
+                        </li>
+                        <li>
+                            <a href="#">DRF</a>
+                        </li>
+                    </ul>
+                </div>
+                <div class="col-lg-6">
+                    <ul class="list-unstyled mb-0">
+                        <li>
+                            <a href="#">JavaScript</a>
+                        </li>
+                        <li>
+                            <a href="#">CSS</a>
+                        </li>
+                        <li>
+                            <a href="#">NuxtJS</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card my-4">
+        <h5 class="card-header">Последние статьи</h5>
+        {% for lp in last_posts %}
+            <div class="card-body">
+                <h5 class="card-title">{{ lp.h1 }}</h5>
+                <img src="{{ lp.image.url }}" alt="" class="card-img-top">
+                {{ lp.description|safe|truncatechars:100 }}
+                <a href="{% url 'post_detail' lp.url%}" class="card-link">Подробнее</a>
+                <hr>
+            </div>
+        {% endfor %}
+    </div>
+</div>

@@ -1,0 +1,56 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        .tab-content {
+            display: none;
+        }
+
+        .active {
+            display: block;
+        }
+
+        .tab {
+            display: inline-block;
+            margin-right: 10px;
+            cursor: pointer;
+            padding: 5px 10px;
+            background-color: #f2f2f2;
+            border: 1px solid #ccc;
+        }
+
+        .tab.active {
+            background-color: #ccc;
+        }
+    </style>
+    <script>
+        function openTab(tabName) {
+            var i, tabContent, tabLinks;
+            tabContent = document.getElementsByClassName("tab-content");
+            for (i = 0; i < tabContent.length; i++) {
+                tabContent[i].style.display = "none";
+            }
+            tabLinks = document.getElementsByClassName("tab");
+            for (i = 0; i < tabLinks.length; i++) {
+                tabLinks[i].className = tabLinks[i].className.replace(" active", "");
+            }
+            document.getElementById(tabName).style.display = "block";
+            event.currentTarget.className += " active";
+        }
+    </script>
+    <h1>Мой блог о путшествиях</h1>
+    <div id="Контакты" class="tab-content">
+        <h2>Контакты</h2>
+        <p>Свяжитесь со мной по электронной почте: example@example.com</p>
+    </div>
+    <div id="О нас" class="tab-content">
+        <h2>О нас</h2>
+        <p>Мы команда путешественников, которая любит делиться своими приключениями и советами.</p>
+    </div>
+    <div>
+        <span class="tab active" onclick="openTab('Контакты')">Контакты</span>
+        <span class="tab" onclick="openTab('О нас')">О нас</span>
+    </div>
+{% endblock %}
+

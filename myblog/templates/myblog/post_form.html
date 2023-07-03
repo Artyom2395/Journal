@@ -1,0 +1,43 @@
+{% extends './base.html' %}
+{% load static %}
+
+{% block header %}
+    {% include './block/header.html' %}
+{% endblock %}
+
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/post_f.css' %}">
+<form action="{% url 'post_create' %}" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="form-group">
+      <label for="{{ form.h1.id_for_label }}">Название поста</label>
+      {{ form.h1 }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.title.id_for_label }}">Заголовок:</label>
+      {{ form.title }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.url.id_for_label }}">url:</label>
+      {{ form.url }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.description.id_for_label }}">Описание:</label>
+      {{ form.description }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.content.id_for_label }}">Контент:</label>
+      {{ form.content }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.image.id_for_label }}">Изображение:</label>
+      {{ form.image }}
+    </div>
+    <div class="form-group">
+      <label for="{{ form.tag.id_for_label }}">Тег:</label>
+      {{ form.tag }}
+    </div>
+    <button type="submit">Сохранить</button>
+  </form>
+{% endblock content %}

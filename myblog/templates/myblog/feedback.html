@@ -1,0 +1,23 @@
+{% extends './base.html' %}
+{% load static %}
+{% block title %} Страница отзывов {% endblock %}
+
+{%block content%}
+    <link rel="stylesheet" href="{% static 'css/forms.css' %}">
+    <h2>Оставьте отзыв</h2>
+    <div class="form-style">
+        <form method="post">
+            {% csrf_token %}
+                {% for field in form %}
+                    <div class="form-style">
+                        {{field.label_tag}}
+                        {{field.errors}}
+                        <div class="form-style input">
+                            {{field}}
+                        </div>
+                    </div>
+                {% endfor %}
+            <button>Оправить</button>
+        </form>
+    </div>
+{% endblock %}
